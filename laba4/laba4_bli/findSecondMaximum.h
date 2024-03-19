@@ -1,27 +1,27 @@
 #pragma once
 #include <limits>
 
-// Находит индекс второго по величине элемента в массиве
+// РќР°С…РѕРґРёС‚ РёРЅРґРµРєСЃ РІС‚РѕСЂРѕРіРѕ РїРѕ РІРµР»РёС‡РёРЅРµ СЌР»РµРјРµРЅС‚Р° РІ РјР°СЃСЃРёРІРµ
 template<typename T>
 int findSecondMaximum(T* array, int length) {
     if (length < 2) {
-        return -1; // Недостаточно элементов для нахождения второго максимума
+        return -1; // РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЌР»РµРјРµРЅС‚РѕРІ РґР»СЏ РЅР°С…РѕР¶РґРµРЅРёСЏ РІС‚РѕСЂРѕРіРѕ РјР°РєСЃРёРјСѓРјР°
     }
 
-    T highest = std::numeric_limits<T>::min(); // Максимальное значение
-    T secondHighest = std::numeric_limits<T>::min(); // Второе по величине значение
-    int secondHighestIndex = -1; // Индекс второго максимума
+    T highest = std::numeric_limits<T>::min(); // РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ
+    T secondHighest = std::numeric_limits<T>::min(); // Р’С‚РѕСЂРѕРµ РїРѕ РІРµР»РёС‡РёРЅРµ Р·РЅР°С‡РµРЅРёРµ
+    int secondHighestIndex = -1; // РРЅРґРµРєСЃ РІС‚РѕСЂРѕРіРѕ РјР°РєСЃРёРјСѓРјР°
 
     for (int i = 0; i < length; ++i) {
         if (array[i] > highest) {
-            secondHighest = highest; // Обновляем второй максимум
-            highest = array[i]; // Обновляем максимум
+            secondHighest = highest; // РћР±РЅРѕРІР»СЏРµРј РІС‚РѕСЂРѕР№ РјР°РєСЃРёРјСѓРј
+            highest = array[i]; // РћР±РЅРѕРІР»СЏРµРј РјР°РєСЃРёРјСѓРј
         }
         else if (array[i] > secondHighest && array[i] < highest) {
-            secondHighest = array[i]; // Найден новый второй максимум
-            secondHighestIndex = i; // Сохраняем индекс второго максимума
+            secondHighest = array[i]; // РќР°Р№РґРµРЅ РЅРѕРІС‹Р№ РІС‚РѕСЂРѕР№ РјР°РєСЃРёРјСѓРј
+            secondHighestIndex = i; // РЎРѕС…СЂР°РЅСЏРµРј РёРЅРґРµРєСЃ РІС‚РѕСЂРѕРіРѕ РјР°РєСЃРёРјСѓРјР°
         }
     }
 
-    return secondHighestIndex; // Возвращаем индекс второго максимума или -1, если он не найден
-}
+    return secondHighestIndex; // Р’РѕР·РІСЂР°С‰Р°РµРј РёРЅРґРµРєСЃ РІС‚РѕСЂРѕРіРѕ РјР°РєСЃРёРјСѓРјР° РёР»Рё -1, РµСЃР»Рё РѕРЅ РЅРµ РЅР°Р№РґРµРЅ
+};
