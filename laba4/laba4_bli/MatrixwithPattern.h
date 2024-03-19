@@ -32,8 +32,24 @@ public:
         delete[] elements; // Освобождение памяти для строк
     }
 
+    // Метод для заполнения матрицы нулями
+    void fillZeros() {
+        for (unsigned int i = 0; i < rows; ++i) {
+            for (unsigned int j = 0; j < cols; ++j) {
+                elements[i][j] = static_cast<T>(0);
+            }
+        }
+    }
+
     // Доступ к элементам матрицы с проверкой выхода за границы
     T& at(unsigned int row, unsigned int col) {
+        if (row >= rows || col >= cols) {
+            throw std::out_of_range("Index out of range");
+        }
+        return elements[row][col];
+    }
+
+    const T& at(unsigned int row, unsigned int col) const {
         if (row >= rows || col >= cols) {
             throw std::out_of_range("Index out of range");
         }
